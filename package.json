@@ -7,7 +7,14 @@
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --watch",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "start": "npm-run-all --parallel build test:watch"
+    "start": "npm-run-all --parallel build test:watch",
+    "lint": "eslint --ext .js ./src ./test ./features/support",
+    "lint:fix": "eslint --fix --ext .js ./src ./test ./features/support",
+    "test:unit": "del ./coverage && NODE_ENV=test nyc _mocha --colors",
+    "coverage": "npm run test:unit -- --reporter min && nyc report --reporter lcov --reporter text",
+    "coverage:open": "npm run coverage && opn ./coverage/lcov-report/index.html",
+    "mocks": "concurrently --kill-others --raw --success 'first' 'npm run wiremock' 'npm start'",
+    "wiremock": "! java -jar ./mocks/wiremock-standalone-2.14.0.jar --port 3001 --root-dir ./mocks"
   },
   "babel": {
     "presets": [

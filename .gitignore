@@ -1,8 +1,15 @@
 # dependencies
-/node_modules
+node_modules
+.npmrc
+.nyc_output
+.idea/
+*DS_Store
+error-shots
 
 # testing
-/coverage
+coverage
+lerna-debug.log*
+cucumber.json
 
 # production
-/build
+build
