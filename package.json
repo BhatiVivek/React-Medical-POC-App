@@ -15,7 +15,7 @@
       "es2015"
     ]
   },
-  "author": "raghavendra",
+  "author": "vivek",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.22.1",
